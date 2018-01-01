@@ -1,0 +1,11 @@
+version: "3.1"
+services:
+  spring-boot-docker-logging:
+    image: spring-boot-docker-logging
+    ports:
+      - "8080:8080"
+    networks:
+      - overlay
+
+networks:
+  overlay:
