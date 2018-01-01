@@ -1,1 +1,1 @@
-# spring-boot-elk-stack
+# spring-boot-application-elk-stack-logging
