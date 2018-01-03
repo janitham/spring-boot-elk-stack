@@ -7,7 +7,7 @@ services:
     networks:
       - overlay
     volumes:
-      - E:\data:/logs
+      - E:\data\:/logs
       
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.0
@@ -33,6 +33,7 @@ services:
       - "5601:5601"
     volumes:
       - E:\data\logstash.yml:./logstash/config/logstash.yml
+      - E:\data\myapp.log:./logstash/logs/myapp.log
     networks:
       - overlay
      
