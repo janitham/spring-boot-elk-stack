@@ -6,6 +6,8 @@ services:
       - "8080:8080"
     networks:
       - overlay
+    volumes:
+      - E:\data:/logs
 
 networks:
   overlay:
