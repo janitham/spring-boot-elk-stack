@@ -8,6 +8,35 @@ services:
       - overlay
     volumes:
       - E:\data:/logs
+      
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.0
+    ports:
+      - "9200:9200"
+    volumes:
+      - E:\data\elasticsearch.yml:./elasticsearch/config/elasticsearch.yml
+    networks:
+      - overlay
+      
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:6.1.0
+    ports:
+      - "5601:5601"
+    volumes:
+      - E:\data:/config
+    networks:
+      - overlay
+  
+  logstash:
+    image: docker.elastic.co/logstash/logstash-oss:6.1.0
+    ports:
+      - "5601:5601"
+    volumes:
+      - E:\data\logstash.yml:./logstash/config/logstash.yml
+    networks:
+      - overlay
+     
+  
 
 networks:
   overlay:
