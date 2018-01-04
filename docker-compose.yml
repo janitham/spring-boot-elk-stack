@@ -18,22 +18,23 @@ services:
     networks:
       - overlay
       
-#  kibana:
-#    image: docker.elastic.co/kibana/kibana-oss:6.1.0
-#    ports:
-#      - "5601:5601"
-#    volumes:
-#      - E:\data:/config
-#    networks:
-#      - overlay
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:6.1.0
+    ports:
+      - "5601:5601"
+    volumes:
+      - E:\data\kibana\kibana.yml:/usr/share/kibana/config/kibana.yml
+    networks:
+      - overlay
   
-#  logstash:
-#    image: docker.elastic.co/logstash/logstash-oss:6.1.0
-#    volumes:
-#      - E:\data\logstash.yml:/logstash/config/logstash.yml
+  logstash:
+    image: docker.elastic.co/logstash/logstash-oss:6.1.0
+    volumes:
+      - E:\data\logstash\logstash.yml:/usr/share/logstash/config/logstash.yml
+      - E:\data\logstash\pipelines.yml:/usr/share/logstash/config/pipelines.yml
 #      - E:\data\myapp.log:/logstash/logs/myapp.log
-#    networks:
-#      - overlay
+    networks:
+      - overlay
      
 networks:
   overlay:
