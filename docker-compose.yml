@@ -28,7 +28,8 @@ services:
       - elk
   
   logstash:
-    image: docker.elastic.co/logstash/logstash-oss:6.1.0
+    build:
+      context: logstash/
     volumes:
       - E:\data\logstash\logstash.yml:/usr/share/logstash/config/logstash.yml
       - E:\data\logstash\pipelines.yml:/usr/share/logstash/config/pipelines.yml
