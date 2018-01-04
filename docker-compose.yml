@@ -1,13 +1,13 @@
 version: "3.1"
 services:
-#  spring-boot-docker-logging:
-#    image: spring-boot-docker-logging
-#    ports:
-#      - "8080:8080"
-#    networks:
-#      - overlay
-#    volumes:
-#      - E:\data\:/logs
+  spring-boot-docker-logging:
+    image: spring-boot-docker-logging
+    ports:
+      - "8080:8080"
+    networks:
+      - elk
+    volumes:
+      - E:\data\logs:/logs
       
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.0
@@ -16,7 +16,7 @@ services:
     volumes:
       - E:\data\elasticsearch\elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     networks:
-      - overlay
+      - elk
       
   kibana:
     image: docker.elastic.co/kibana/kibana-oss:6.1.0
@@ -25,16 +25,15 @@ services:
     volumes:
       - E:\data\kibana\kibana.yml:/usr/share/kibana/config/kibana.yml
     networks:
-      - overlay
+      - elk
   
   logstash:
     image: docker.elastic.co/logstash/logstash-oss:6.1.0
     volumes:
       - E:\data\logstash\logstash.yml:/usr/share/logstash/config/logstash.yml
       - E:\data\logstash\pipelines.yml:/usr/share/logstash/config/pipelines.yml
-#      - E:\data\myapp.log:/logstash/logs/myapp.log
     networks:
-      - overlay
+      - elk
      
 networks:
-  overlay:
+  elk:
