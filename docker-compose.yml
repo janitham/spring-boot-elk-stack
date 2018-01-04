@@ -1,43 +1,39 @@
 version: "3.1"
 services:
-  spring-boot-docker-logging:
-    image: spring-boot-docker-logging
-    ports:
-      - "8080:8080"
-    networks:
-      - overlay
-    volumes:
-      - E:\data\:/logs
+#  spring-boot-docker-logging:
+#    image: spring-boot-docker-logging
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - overlay
+#    volumes:
+#      - E:\data\:/logs
       
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.0
     ports:
       - "9200:9200"
     volumes:
-      - E:\data\elasticsearch.yml:./elasticsearch/config/elasticsearch.yml
+      - E:\data\elasticsearch\elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     networks:
       - overlay
       
-  kibana:
-    image: docker.elastic.co/kibana/kibana-oss:6.1.0
-    ports:
-      - "5601:5601"
-    volumes:
-      - E:\data:/config
-    networks:
-      - overlay
+#  kibana:
+#    image: docker.elastic.co/kibana/kibana-oss:6.1.0
+#    ports:
+#      - "5601:5601"
+#    volumes:
+#      - E:\data:/config
+#    networks:
+#      - overlay
   
-  logstash:
-    image: docker.elastic.co/logstash/logstash-oss:6.1.0
-    ports:
-      - "5601:5601"
-    volumes:
-      - E:\data\logstash.yml:./logstash/config/logstash.yml
-      - E:\data\myapp.log:./logstash/logs/myapp.log
-    networks:
-      - overlay
+#  logstash:
+#    image: docker.elastic.co/logstash/logstash-oss:6.1.0
+#    volumes:
+#      - E:\data\logstash.yml:/logstash/config/logstash.yml
+#      - E:\data\myapp.log:/logstash/logs/myapp.log
+#    networks:
+#      - overlay
      
-  
-
 networks:
   overlay:
