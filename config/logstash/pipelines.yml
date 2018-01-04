@@ -33,6 +33,6 @@ output {
  
   # Sending properly parsed log events to elasticsearch
   elasticsearch {
-    hosts => ["localhost:9200"]
+    hosts => ["elasticsearch:9200"]
   }
 }
