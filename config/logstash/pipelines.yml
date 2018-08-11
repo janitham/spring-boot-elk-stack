@@ -1,5 +1,13 @@
 input {
-
+  file {
+    type => "java"
+    path => "/var/tmp/myapp.log"
+    codec => multiline {
+      pattern => "^%{YEAR}-%{MONTHNUM}-%{MONTHDAY} %{TIME}.*"
+      negate => "true"
+      what => "previous"
+    }
+  }
 }
 
 filter {
