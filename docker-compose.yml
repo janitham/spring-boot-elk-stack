@@ -7,14 +7,14 @@ services:
     networks:
       - elk
     volumes:
-      - E:\data\logs:/logs
+      - logs:/logs
       
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.0
     ports:
       - "9200:9200"
     volumes:
-      - E:\data\elasticsearch\elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     networks:
       - elk
       
@@ -23,7 +23,7 @@ services:
     ports:
       - "5601:5601"
     volumes:
-      - E:\data\kibana\kibana.yml:/usr/share/kibana/config/kibana.yml
+      - config/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
     networks:
       - elk
   
@@ -31,8 +31,8 @@ services:
     build:
       context: logstash/
     volumes:
-      - E:\data\logstash\logstash.yml:/usr/share/logstash/config/logstash.yml
-      - E:\data\logstash\pipelines.yml:/usr/share/logstash/config/pipelines.yml
+      - config/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - config/logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
     networks:
       - elk
      
